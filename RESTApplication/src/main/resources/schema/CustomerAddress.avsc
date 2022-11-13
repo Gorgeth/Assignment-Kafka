@@ -1,0 +1,19 @@
+{
+  "type": "record",
+  "name": "CustomerAddress",
+  "namespace": "com.cegal.avro.model",
+  "fields": [
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "street",
+      "type": "string"
+    },
+    {
+      "name": "postcode",
+      "type": "string"
+    }
+  ]
+}
