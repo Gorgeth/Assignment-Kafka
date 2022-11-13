@@ -16,6 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class RESTController {
 
+  private final KafkaProducer producer;
+
+  @Autowired
+  public RESTController(KafkaProducer producer) {
+    this.producer = producer;
+  }
 
 
   @GetMapping(value = "/heartbeat")
@@ -25,7 +31,7 @@ public class RESTController {
   }
 
   @PostMapping(
-          value = "/api/customerInfo",
+          value = "/customerInfo",
           consumes = "application/json")
   @Description("Submit customer info.")
   public ResponseEntity<com.cegal.model.CustomerAddress> postCustomerAddress(@RequestBody com.cegal.model.CustomerAddress customerAddress) {
@@ -36,8 +42,7 @@ public class RESTController {
             .setPostcode(customerAddress.getPostcode())
             .build();
 
-//    producer.submitToTopic(convertedAddress);
-    System.out.println("Customer info has been submitted: " + convertedAddress.toString());
+    producer.submitToTopic(convertedAddress);
 
     return ResponseEntity
             .status(201)

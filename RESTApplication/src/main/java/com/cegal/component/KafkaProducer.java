@@ -12,25 +12,25 @@ import org.springframework.util.concurrent.ListenableFutureCallback;
 @Component
 public class KafkaProducer {
 
-  private final KafkaTemplate<String, String> kafkaTemplate;
+  private final KafkaTemplate<String, CustomerAddress> kafkaTemplate;
 
   @Value(value = "${kafka.topic}")
   private String topic;
 
 
   @Autowired
-  public KafkaProducer(KafkaTemplate<String, String> kafkaTemplate) {
+  public KafkaProducer(KafkaTemplate<String, CustomerAddress> kafkaTemplate) {
     this.kafkaTemplate = kafkaTemplate;
   }
 
 
   public void submitToTopic(CustomerAddress customerAddress) {
-    ListenableFuture<SendResult<String, String>> future = kafkaTemplate.send(topic, customerAddress.toString());
+    ListenableFuture<SendResult<String, CustomerAddress>> future = kafkaTemplate.send(topic, customerAddress);
 
     future.addCallback(new ListenableFutureCallback<>() {
 
       @Override
-      public void onSuccess(SendResult<String, String> result) {
+      public void onSuccess(SendResult<String, CustomerAddress> result) {
         System.out.println("Sent message=[" + customerAddress +
                 "] with offset=[" + result.getRecordMetadata().offset() + "]");
       }

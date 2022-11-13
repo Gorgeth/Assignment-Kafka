@@ -1,4 +1,4 @@
-version: "3"
+version: "3.7"
 services:
   zookeeper:
     image: wurstmeister/zookeeper:3.4.6
@@ -6,19 +6,16 @@ services:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
     ports:
-      - "22181:2181"
+      - "2181:2181"
 
   kafka:
-    image: wurstmeister/kafka:2.12-2.1.0
+    image: wurstmeister/kafka:2.13-2.8.1
     environment:
       KAFKA_BROKER_ID: 1
+      KAFKA_ADVERTISED_HOST_NAME: 127.0.0.1
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_LISTENERS: INSIDE://:9092
-      KAFKA_ADVERTISED_LISTENERS: INSIDE://:9092
-      KAFKA_INTER_BROKER_LISTENER_NAME: INSIDE
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INSIDE:PLAINTEXT
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
     ports:
-      - "29092:29092"
+      - "9092:9092"
     depends_on:
       - zookeeper

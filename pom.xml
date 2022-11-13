@@ -25,6 +25,8 @@
     <swagger.version>2.7.0</swagger.version>
     <tomcat.embed.version>10.1.1</tomcat.embed.version>
     <avro.version>1.10.2</avro.version>
+
+    <jupiter.version>5.8.2</jupiter.version>
   </properties>
 
   <build>
@@ -40,7 +42,6 @@
   <modules>
     <module>RESTApplication</module>
     <module>ConsumerApplication</module>
-    <module>KafkaComposer</module>
   </modules>
 
 </project>
