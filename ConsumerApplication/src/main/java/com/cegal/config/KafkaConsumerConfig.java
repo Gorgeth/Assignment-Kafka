@@ -23,6 +23,10 @@ public class KafkaConsumerConfig {
     @Value(value = "${kafka.group.id}")
     private String groupID;
 
+
+    /**
+     * Configure the kafka properties required for consumption
+     */
     @Bean
     public ConsumerFactory<String, CustomerAddress> consumerFactory() {
         Map<String, Object> configProps = new HashMap<>();
@@ -34,6 +38,9 @@ public class KafkaConsumerConfig {
         return new DefaultKafkaConsumerFactory<>(configProps, new StringDeserializer(), new CustomerAddressDeSerializer());
     }
 
+    /**
+     * Creates the kafka listener bean used by KafkaConsumer
+     */
     @Bean
     public ConcurrentKafkaListenerContainerFactory<String, CustomerAddress> kafkaListenerContainerFactory() {
         ConcurrentKafkaListenerContainerFactory<String, CustomerAddress> factory =

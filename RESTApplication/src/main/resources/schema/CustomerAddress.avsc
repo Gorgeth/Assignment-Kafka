@@ -8,12 +8,24 @@
       "type": "string"
     },
     {
+      "name": "city",
+      "type": "string"
+    },
+    {
+    "name": "areaCode",
+      "type": "string"
+    },
+    {
       "name": "street",
       "type": "string"
     },
     {
-      "name": "postcode",
-      "type": "string"
+      "name": "poBox",
+      "type": "long"
+    },
+    {
+      "name": "phoneNumber",
+      "type": "long"
     }
   ]
 }
