@@ -35,12 +35,12 @@ public class RESTController {
     public ResponseEntity<com.cegal.model.CustomerAddress> postCustomerAddress(@RequestBody com.cegal.model.CustomerAddress customerAddress) {
 
         CustomerAddress convertedAddress = CustomerAddress.newBuilder()
-                .setName("Name")
-                .setCity("City")
-                .setAreaCode("AreaCode")
-                .setStreet("Street")
-                .setPoBox(5555555L)
-                .setPhoneNumber(98765432L)
+                .setName(customerAddress.getName())
+                .setCity(customerAddress.getCity())
+                .setAreaCode(customerAddress.getAreaCode())
+                .setStreet(customerAddress.getStreet())
+                .setPoBox(customerAddress.getPoBox())
+                .setPhoneNumber(customerAddress.getPhoneNumber())
                 .build();
 
         producer.submitToTopic(convertedAddress);
