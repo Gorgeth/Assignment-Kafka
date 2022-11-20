@@ -1,0 +1,20 @@
+Task description
+
+    Develop a SpringBoot microservice in Kotlin (or Java) that exposes REST interface and accepts customer address JSON payload in POST operation.
+    Expose Swagger API definition for that interface.
+    Define AVRO schema for JSON payload.
+    Define Kafka producer inside the same microservice, that sends the same AVRO-based JSON payload to Kafka.
+    Create a simple Kafka consumer as a SpringBoot microservice that reads this payload from Kafka and writes content to a file or any other sink.
+    Commit the runnable code to Github.
+
+ 
+
+Other instructions
+
+    The candidate is free to make assumptions/choices wherever required and we would love to hear why he made them.
+    Include a readme file in the git repo with instructions on how to run the application locally. Mention all assumptions/choices made in the readme. 
+
+    For Kafka infrastructure, any available Docker compose can be used, or any cloud-based solution as well.
+    If using any additional data sinks in step - 5, please make sure to dockerize them. For example, if using a Postgres database use a docker image.
+    The candidate should explain/elaborate and demonstrate code upon finishing the task.
+    Also, GitHub pull-request process should be elaborated/demonstrated.
